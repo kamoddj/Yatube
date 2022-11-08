@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Об авторе проекта{% endblock %}
+{% block content %}
+
+<h1>Информаци об авторе</h1>
+<p>
+<h5>
+    <i>Тут я размещу информацию о себе</i>
+    <h5>
+        <br>
+        </p>
+        <body>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col">
+                    <ul>
+                        <b>О Себе</b>
+                        <br><br><br>
+                        <li>Меня зовут Сергей и я решил перейти в сферу IT</li>
+                        <br>
+                        <li>Я с детсва люблю различное творчество и для меня бекэнд - это одно из направлений
+                            ведь тут можно творить!
+                        </li>
+                        <br>
+                        <li>В свободное время люблю кататься на вэйкборде, скейте, хожу на фитнес.
+                            Это хорошие способы отвлечься и разгрузить мозг. Плюс неплохой такой выброс эндорфинов
+                        </li>
+                        <br>
+                    </ul>
+                </div>
+                <div class="col">
+                    <b>Информация</b>
+                    <br><br><br>
+                    <p>
+                        -Способность болтать — еще не признак интеллекта.(Квай-Гон Джин)
+                        <br><br>
+                        -Восприятие управляет реальностью.(Квай-Гон Джин)
+                        <br><br>
+                        -Всегда найдется рыба больше.(Квай-Гон Джин)
+                        <br><br>
+                        <a href="{% url 'posts:index' %}">-Чуи, мы дома.</a>
+                    </p>
+                </div>
+                <div class="col">
+                    <b>Соц. сети</b>
+                    <br><br><br>
+                    <p>
+                        <a href="http://vk.com/kamodj" target="blank">Мой ВК>
+                            <br><br>
+                            <a href="https://www.instagram.com/kamodj/?hl=ru" target="blank">Instagram>
+                                <br><br>
+                                <a href="https://github.com/kamoddj" target="blank">Github>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
