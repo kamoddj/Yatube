@@ -110,13 +110,13 @@ class PostFormTest(TestCase):
             data=form_data,
             follow=True
         )
-        post_1 = Post.objects.get(text='Пост с картинкой')
+        post_1 = Post.objects.get(text=form_data['text'])
         self.assertEqual(Post.objects.count(), test_count + 1)
         self.assertRedirects(response, reverse('posts:profile',
                              kwargs={'username': self.user_author.username}))
         self.assertTrue(
             Post.objects.filter(
-                text='Пост с картинкой',
+                text=form_data['text'],
                 group=self.group.id,
             ).exists()
         )

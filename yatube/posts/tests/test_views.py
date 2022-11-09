@@ -146,10 +146,10 @@ class PostViewTest(TestCase):
                 first_object = response.context['page_obj'][0]
                 task_author_0 = first_object.author
                 task_text_0 = first_object.text
-                task_slug_0 = first_object.group.title
+                task_slug_0 = first_object.group.slug
                 self.assertEqual(task_author_0, self.post.author)
-                self.assertEqual(task_text_0, 'Текстовый пост')
-                self.assertEqual(task_slug_0, 'Тестовая группа')
+                self.assertEqual(task_text_0, self.post.text)
+                self.assertEqual(task_slug_0, self.group.slug)
 
     def test_post_detail_correct_context(self):
         """Контекст страницы post_detail корректен"""
@@ -159,10 +159,10 @@ class PostViewTest(TestCase):
         first_object = response.context['post']
         task_author_0 = first_object.author
         task_text_0 = first_object.text
-        task_slug_0 = self.group.title
+        task_slug_0 = self.group.slug
         self.assertEqual(task_author_0, self.post.author)
-        self.assertEqual(task_text_0, 'Текстовый пост')
-        self.assertEqual(task_slug_0, 'Тестовая группа')
+        self.assertEqual(task_text_0, self.post.text)
+        self.assertEqual(task_slug_0, self.group.slug)
 
     def test_form_correct_context(self):
         """Шаблон сформирован с правильным полями формы"""
@@ -256,11 +256,11 @@ class CacheTests(TestCase):
                 first_object = response.context['page_obj'][0]
                 task_author_0 = first_object.author
                 task_text_0 = first_object.text
-                task_slug_0 = first_object.group.title
+                task_slug_0 = first_object.group.slug
                 task_image_0 = Post.objects.first().image
                 self.assertEqual(task_author_0, self.post.author)
-                self.assertEqual(task_text_0, 'Тестовая запись для поста')
-                self.assertEqual(task_slug_0, 'Тестовая группа')
+                self.assertEqual(task_text_0, self.post.text)
+                self.assertEqual(task_slug_0, self.group.slug)
                 self.assertEqual(task_image_0, 'posts/small.gif')
 
     def test_post_detail_correct_context(self):
@@ -271,32 +271,49 @@ class CacheTests(TestCase):
         first_object = response.context['post']
         task_author_0 = first_object.author
         task_text_0 = first_object.text
-        task_slug_0 = self.group.title
+        task_slug_0 = self.group.slug
         task_image_0 = Post.objects.first().image
         self.assertEqual(task_author_0, self.post.author)
-        self.assertEqual(task_text_0, 'Тестовая запись для поста')
-        self.assertEqual(task_slug_0, 'Тестовая группа')
+        self.assertEqual(task_text_0, self.post.text)
+        self.assertEqual(task_slug_0, self.group.slug)
         self.assertEqual(task_image_0, 'posts/small.gif')
 
     def test_authorized_can_follow(self):
+        """Авторизованный пользователь может подписываться"""
         self.authorized_client.get(
             reverse('posts:profile_follow',
                     kwargs={'username': self.user_follower.username}))
         self.assertEqual(Follow.objects.all().count(), 1)
 
     def test_authorized_can_unfollow(self):
+        """Не вторизованный пользователь не может подписываться"""
         self.authorized_client.get(
             reverse('posts:profile_unfollow',
                     kwargs={'username': self.user_follower.username}))
         self.assertEqual(Follow.objects.all().count(), 0)
 
     def test_context_follow(self):
+        """ Подписанный пользователь видит записи"""
         Follow.objects.create(user=self.user_follower, author=self.user)
         Post.objects.create(
             author=self.user,
             text='Тестовая запись для подписчика'
         )
         response = self.follower.get(reverse('posts:follow_index'))
+        first_object = response.context['page_obj'][0]
+        first = first_object.text
+        self.assertEqual(first, 'Тестовая запись для подписчика')
+        response = self.not_follower.get(reverse('posts:follow_index'))
+        self.assertNotContains(response, 'Тестовая запись для подписчика')
+
+    def test_context_unfollow(self):
+        """Не подписанный пользователь не видит записи"""
+        Follow.objects.create(user=self.user_follower, author=self.user)
+        Post.objects.create(
+            author=self.user,
+            text='Тестовая запись для подписчика'
+        )
+        response = self.not_follower.get(reverse('posts:index'))
         first_object = response.context['page_obj'][0]
         first = first_object.text
         self.assertEqual(first, 'Тестовая запись для подписчика')
