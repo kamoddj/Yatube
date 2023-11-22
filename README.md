@@ -119,17 +119,8 @@ pytest
 
 ```bash
 pytest
-=================================================== test session starts ===================================================
-platform win32 -- Python 3.10.5, pytest-6.2.4, py-1.11.0, pluggy-0.13.1 -- ...\hw05_final\venv\Scripts\python.exe     
-django: settings: yatube.settings (from ini)
-rootdir: ...\hw05_final, configfile: pytest.ini, testpaths: tests/
-plugins: Faker-6.0.0, django-4.4.0, pythonpath-0.7.3
-collected 31 items
+ 
 
-tests/test_paginator.py::TestGroupPaginatorView::test_group_paginator_view_get PASSED                                [  3%]
-tests/test_paginator.py::TestGroupPaginatorView::test_group_paginator_not_in_context_view PASSED                     [  6%]
-tests/test_paginator.py::TestGroupPaginatorView::test_index_paginator_not_in_view_context PASSED                     [  9%]
-tests/test_paginator.py::TestGroupPaginatorView::test_index_paginator_view PASSED                                    [ 12%]
 tests/test_paginator.py::TestGroupPaginatorView::test_profile_paginator_view PASSED                                  [ 16%]
 tests/test_about.py::TestTemplateView::test_about_author_tech PASSED                                                 [ 19%] 
 tests/test_auth_urls.py::TestAuthUrls::test_auth_urls PASSED                                                         [ 22%]
