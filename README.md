@@ -119,35 +119,6 @@ pytest
 
 ```bash
 pytest
- 
-
-tests/test_paginator.py::TestGroupPaginatorView::test_profile_paginator_view PASSED                                  [ 16%]
-tests/test_about.py::TestTemplateView::test_about_author_tech PASSED                                                 [ 19%] 
-tests/test_auth_urls.py::TestAuthUrls::test_auth_urls PASSED                                                         [ 22%]
-tests/test_comment.py::TestComment::test_comment_add_view PASSED                                                     [ 25%]
-tests/test_comment.py::TestComment::test_comment_add_auth_view PASSED                                                [ 29%]
-tests/test_create.py::TestCreateView::test_create_view_get PASSED                                                    [ 32%]
-tests/test_create.py::TestCreateView::test_create_view_post PASSED                                                   [ 35%]
-tests/test_follow.py::TestFollow::test_follow_not_auth PASSED                                                        [ 38%]
-tests/test_follow.py::TestFollow::test_follow_auth PASSED                                                            [ 41%]
-tests/test_homework.py::TestPost::test_post_create PASSED                                                            [ 45%]
-tests/test_homework.py::TestGroup::test_group_create PASSED                                                          [ 48%]
-tests/test_homework.py::TestGroupView::test_group_view PASSED                                                        [ 51%]
-tests/test_homework.py::TestCustomErrorPages::test_custom_404 PASSED                                                 [ 54%]
-tests/test_homework.py::TestCustomErrorPages::test_custom_500 PASSED                                                 [ 58%] 
-tests/test_homework.py::TestCustomErrorPages::test_custom_403 PASSED                                                 [ 61%]
-tests/test_post.py::TestPostView::test_index_post_with_image PASSED                                                  [ 64%]
-tests/test_post.py::TestPostView::test_index_post_caching PASSED                                                     [ 67%]
-tests/test_post.py::TestPostView::test_post_view_get PASSED                                                          [ 70%]
-tests/test_post.py::TestPostEditView::test_post_edit_view_get PASSED                                                 [ 74%]
-tests/test_post.py::TestPostEditView::test_post_edit_view_author_get PASSED                                          [ 77%]
-tests/test_post.py::TestPostEditView::test_post_edit_view_author_post PASSED                                         [ 80%]
-tests/test_profile.py::TestProfileView::test_profile_view_get PASSED                                                 [ 83%]
-tests/test_comment.py::TestComment::test_comment_model PASSED                                                        [ 87%]
-tests/test_follow.py::TestFollow::test_follow PASSED                                                                 [ 90%] 
-tests/test_homework.py::TestPost::test_post_model PASSED                                                             [ 93%] 
-tests/test_homework.py::TestPost::test_post_admin PASSED                                                             [ 96%] 
-tests/test_homework.py::TestGroup::tes
 ```
 
 Запускаем проект:
