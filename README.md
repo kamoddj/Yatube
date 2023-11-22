@@ -147,9 +147,7 @@ tests/test_comment.py::TestComment::test_comment_model PASSED                   
 tests/test_follow.py::TestFollow::test_follow PASSED                                                                 [ 90%] 
 tests/test_homework.py::TestPost::test_post_model PASSED                                                             [ 93%] 
 tests/test_homework.py::TestPost::test_post_admin PASSED                                                             [ 96%] 
-tests/test_homework.py::TestGroup::test_group_model PASSED                                                           [100%] 
-
-============================================== 31 passed in 5.86s ==============================================
+tests/test_homework.py::TestGroup::tes
 ```
 
 Запускаем проект:
